@@ -1,4 +1,7 @@
-package homework.library;
+package employee.storage;
+
+import homework.library.model.Author;
+import homework.library.model.Book;
 
 public class BookStorage {
 
@@ -27,6 +30,14 @@ public class BookStorage {
     public void search(String keyword) {
         for (int i = 0; i < size; i++) {
             if (books[i].getTitle().toLowerCase().contains(keyword.toLowerCase())) {
+                System.out.println(books[i]);
+            }
+        }
+    }
+
+    public void searchBookByAuthor(Author author) {
+        for (int i = 0; i < size; i++) {
+            if (books[i].getAuthor().equals(author)) {
                 System.out.println(books[i]);
             }
         }
