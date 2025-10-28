@@ -1,6 +1,6 @@
-package homework.library.storage;
+package employee.storage;
 
-import employee.Employee;
+import employee.model.Employee;
 
 public class EmployeeStorage {
     private Employee[] employees = new Employee[10];

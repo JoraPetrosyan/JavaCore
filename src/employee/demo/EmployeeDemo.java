@@ -1,19 +1,19 @@
 package employee.demo;
 
-import employee.CommandsEmpl;
-import employee.Employee;
-import homework.library.storage.EmployeeStorage;
+import employee.EmployeeCommands;
+import employee.model.Employee;
+import employee.storage.EmployeeStorage;
 
 import java.util.Scanner;
 
-public class EmployeeDemo implements CommandsEmpl {
+public class EmployeeDemo implements EmployeeCommands {
     private static Scanner scanner = new Scanner(System.in);
     private static EmployeeStorage employeeStorage = new EmployeeStorage();
 
     public static void main(String[] args) {
         boolean isRun = true;
         while (isRun) {
-            CommandsEmpl.printAuthorAndBookCommands();
+            EmployeeCommands.printAuthorAndBookCommands();
             String command = scanner.nextLine();
             switch (command) {
                 case EXIT:

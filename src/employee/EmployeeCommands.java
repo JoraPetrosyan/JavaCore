@@ -1,6 +1,6 @@
 package employee;
 
-public interface CommandsEmpl {
+public interface EmployeeCommands {
 
     String EXIT = "0";
     String ADD_EMPLOYEE = "1";

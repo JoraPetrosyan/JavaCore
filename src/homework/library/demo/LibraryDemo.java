@@ -1,9 +1,10 @@
-package homework.library;
+package homework.library.demo;
 
+import homework.library.Commands;
 import homework.library.model.Author;
 import homework.library.model.Book;
 import homework.library.storage.AuthorStorage;
-import employee.storage.BookStorage;
+import homework.library.storage.BookStorage;
 
 import java.util.Scanner;
 
