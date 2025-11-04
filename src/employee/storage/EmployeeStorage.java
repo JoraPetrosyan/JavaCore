@@ -1,5 +1,6 @@
 package employee.storage;
 
+import employee.PositionLevel;
 import employee.model.Employee;
 
 public class EmployeeStorage {
@@ -37,6 +38,15 @@ public class EmployeeStorage {
     public Employee searchEmployeeByCompanyName(String company) {
         for (int i = 0; i < size; i++) {
             if (employees[i].getCompany().equals(company)) {
+                return employees[i];
+            }
+        }
+        return null;
+    }
+
+    public Employee searchEmployeeByPositionLevel(PositionLevel positionLevel) {
+        for (int i = 0; i < size; i++) {
+            if (employees[i].getPositionLevel().equals(positionLevel)) {
                 return employees[i];
             }
         }

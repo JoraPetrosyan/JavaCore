@@ -1,6 +1,7 @@
 package employee.demo;
 
 import employee.EmployeeCommands;
+import employee.PositionLevel;
 import employee.model.Employee;
 import employee.storage.EmployeeStorage;
 
@@ -34,25 +35,34 @@ public class EmployeeDemo implements EmployeeCommands {
                     String company = scanner.nextLine();
                     Employee companyName = employeeStorage.searchEmployeeByCompanyName(company);
                     System.out.println(companyName);
+                case SEARCH_EMPLOYEES_BY_POSITION_LEVEL:
+                    System.out.println("Pleas input employee position from this list: JUNIOR,MIDDLE,SENIOR,LEAD");
+                    PositionLevel position = PositionLevel.valueOf(scanner.nextLine().toUpperCase());
+                    Employee positionLevel = employeeStorage.searchEmployeeByPositionLevel(position);
+                    System.out.println(positionLevel);
             }
         }
     }
 
     private static void addEmployee() {
-        System.out.println("Pleas input employee's name");
-        String name = scanner.nextLine();
-        System.out.println("Pleas input employee's surname");
-        String surname = scanner.nextLine();
-        System.out.println("Pleas input employee's employeeID");
-        String employeeID = scanner.nextLine();
-        System.out.println("Pleas input employee's salary");
-        int salary = Integer.parseInt(scanner.nextLine());
-        System.out.println("Pleas input employee's company");
-        String company = scanner.nextLine();
-        System.out.println("Pleas input employee's position");
-        String position = scanner.nextLine();
-        Employee employee = new Employee(name, surname, employeeID, salary, company, position);
-        employeeStorage.addEmployee(employee);
-        System.out.println("Employee added successfully");
+        try {
+            System.out.println("Pleas input employee's name");
+            String name = scanner.nextLine();
+            System.out.println("Pleas input employee's surname");
+            String surname = scanner.nextLine();
+            System.out.println("Pleas input employee's employeeID");
+            String employeeID = scanner.nextLine();
+            System.out.println("Pleas input employee's salary");
+            int salary = Integer.parseInt(scanner.nextLine());
+            System.out.println("Pleas input employee's company");
+            String company = scanner.nextLine();
+            System.out.println("Pleas input employee's position from this list: JUNIOR,MIDDLE,SENIOR,LEAD");
+            PositionLevel position = PositionLevel.valueOf(scanner.nextLine().toUpperCase());
+            Employee employee = new Employee(name, surname, employeeID, salary, company, position);
+            employeeStorage.addEmployee(employee);
+            System.out.println("Employee added successfully");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
