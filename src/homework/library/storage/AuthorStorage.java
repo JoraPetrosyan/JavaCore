@@ -1,7 +1,11 @@
 package homework.library.storage;
 
 import homework.library.model.Author;
-public class AuthorStorage {
+
+import java.io.Serializable;
+
+public class AuthorStorage implements Serializable {
+
     private Author[] authors = new Author[10];
     private int size = 0;
 

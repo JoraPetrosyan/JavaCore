@@ -5,14 +5,16 @@ import homework.library.model.Author;
 import homework.library.model.Book;
 import homework.library.storage.AuthorStorage;
 import homework.library.storage.BookStorage;
+import homework.library.util.FileUtil;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class LibraryDemo implements Commands {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static BookStorage bookStorage = new BookStorage();
-    private static AuthorStorage authorStorage = new AuthorStorage();
+    private static BookStorage bookStorage = FileUtil.deserializeBookStorage();
+    private static AuthorStorage authorStorage = FileUtil.deserializeAuthorStorage();
 
     public static void main(String[] args) {
         boolean isRun = true;
@@ -25,9 +27,11 @@ public class LibraryDemo implements Commands {
                     break;
                 case ADD_AUTHOR:
                     addAuthor();
+                    FileUtil.serializeAuthorData(authorStorage);
                     break;
                 case ADD_BOOK:
                     addBook();
+                    FileUtil.serializeBookData(bookStorage);
                     break;
                 case PRINT_ALL_AUTHORS:
                     authorStorage.print();
@@ -77,7 +81,6 @@ public class LibraryDemo implements Commands {
         int age = Integer.parseInt(scanner.nextLine());
         System.out.println("Pleas input author's phone number");
         String phoneNumber = scanner.nextLine();
-
         Author author = new Author(name, surname, age, phoneNumber);
         authorStorage.add(author);
         System.out.println("Author added successfully");
@@ -97,6 +100,7 @@ public class LibraryDemo implements Commands {
             book.setTitle(bookTitle);
             book.setPrice(price);
             book.setAuthor(author);
+            book.setCreatedDate(new Date());
             bookStorage.add(book);
             System.out.println("Book added successfully");
         } else {

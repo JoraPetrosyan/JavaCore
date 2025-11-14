@@ -3,7 +3,9 @@ package homework.library.storage;
 import homework.library.model.Author;
 import homework.library.model.Book;
 
-public class BookStorage {
+import java.io.Serializable;
+
+public class BookStorage implements Serializable {
 
     private Book[] books = new Book[10];
     private int size = 0;

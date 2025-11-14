@@ -1,19 +1,24 @@
 package homework.library.model;
 
+import homework.library.util.DateUtil;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
-public class Book {
+public class Book implements Serializable {
 
     private String title;
     private Author author;
     private double price;
     private int quantity;
+    private Date createdDate;
 
-    public Book(Author author, String title, double price, int quantity) {
+    public Book(String title, Author author, double price, int quantity, Date createdDate) {
         this.title = title;
+        this.author = author;
         this.price = price;
         this.quantity = quantity;
-        this.author = author;
+        this.createdDate = createdDate;
     }
 
     public Book() {
@@ -51,16 +56,24 @@ public class Book {
         this.quantity = quantity;
     }
 
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Double.compare(price, book.price) == 0 && quantity == book.quantity && Objects.equals(title, book.title) && Objects.equals(author, book.author);
+        return Double.compare(price, book.price) == 0 && quantity == book.quantity && Objects.equals(title, book.title) && Objects.equals(author, book.author) && Objects.equals(createdDate, book.createdDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, author, price, quantity);
+        return Objects.hash(title, author, price, quantity, createdDate);
     }
 
     @Override
@@ -70,6 +83,7 @@ public class Book {
                 ", author=" + author +
                 ", price=" + price +
                 ", quantity=" + quantity +
+                ", createdDate=" + DateUtil.fromDateToStr(createdDate) +
                 '}';
     }
 }
