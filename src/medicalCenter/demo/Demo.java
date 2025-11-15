@@ -163,26 +163,3 @@ public class Demo implements CommandField {
 
 
 }
-
-//    private static void changeDoctorById() {
-//        try {
-//            System.out.println("Pleas input doctor's id");
-//            int id = Integer.parseInt(scanner.nextLine());
-//            doctorStorage.getDoctorById(String.valueOf(id));
-//            System.out.println("Pleas input doctor's name");
-//            String name = scanner.nextLine();
-//            System.out.println("Pleas input doctor's surname");
-//            String surname = scanner.nextLine();
-//            System.out.println("Pleas input doctor's email ");
-//            String email = scanner.nextLine();
-//            System.out.println("Pleas input doctor's phoneNumber");
-//            String phoneNumber = scanner.nextLine();
-//            System.out.println("Pleas input doctor's profession");
-//            String profession = scanner.nextLine();
-//            Doctor doctor = new Doctor(id, name, surname, phoneNumber, email, profession);
-//            doctorStorage.addDoctor(doctor);
-//            System.out.println("Doctor added successfully");
-//        } catch (IllegalArgumentException e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
